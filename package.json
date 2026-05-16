@@ -1,0 +1,49 @@
+{
+  "name": "terminal-shot",
+  "version": "0.1.0",
+  "description": "Turn terminal output into beautiful shareable images for READMEs, docs, Discord, and social posts.",
+  "type": "module",
+  "bin": {
+    "terminal-shot": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "demo": "npm run build && node dist/index.js demo -o examples/demo.png",
+    "prepack": "tsc"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "keywords": [
+    "terminal",
+    "screenshot",
+    "ansi",
+    "cli",
+    "png",
+    "svg",
+    "readme"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ansi-to-html": "^0.7.2",
+    "chalk": "^5.6.2",
+    "commander": "^12.1.0",
+    "playwright": "^1.57.0",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.25",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

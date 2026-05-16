@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.claude/
+coverage/
+playwright-report/
+test-results/
+.DS_Store
+*.log
+.env
+.env.*
+terminal-shot.png
+output.png

@@ -1,0 +1,11 @@
+terminal-shot v0.1.0
+
+$ pnpm test --color=always
+
+ PASS  src/render/renderHtml.test.ts
+ PASS  src/commands/file.test.ts
+ PASS  src/themes.test.ts
+
+Test Suites: 3 passed, 3 total
+Tests:       18 passed, 18 total
+Time:        1.42s

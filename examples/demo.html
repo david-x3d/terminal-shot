@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>terminal-shot</title>
+  <style>
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 900px;
+  background: #0b1020;
+}
+
+body {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+}
+
+.terminal-shot {
+  width: 900px;
+  padding: 32px;
+  background: #0b1020;
+  color: #c0caf5;
+}
+
+.terminal-window,
+.terminal-plain {
+  width: 100%;
+  overflow: hidden;
+  color: #c0caf5;
+  background: #16161e;
+  border: 1px solid rgba(122, 162, 247, 0.20);
+  border-radius: 18px;
+  box-shadow: 0 28px 90px rgba(2, 6, 23, 0.55);
+}
+
+.terminal-window {
+  backdrop-filter: blur(22px) saturate(145%);
+}
+
+.terminal-plain {
+  padding: 0;
+}
+
+.terminal-titlebar {
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: 72px 1fr 72px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background: #1f2335;
+  border-bottom: 1px solid rgba(122, 162, 247, 0.20);
+}
+
+.traffic-lights {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.traffic-light {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.24);
+}
+
+.traffic-light.red {
+  background: #ff5f57;
+}
+
+.traffic-light.yellow {
+  background: #ffbd2e;
+}
+
+.traffic-light.green {
+  background: #28c840;
+}
+
+.terminal-heading {
+  min-width: 0;
+  text-align: center;
+}
+
+.terminal-title,
+.terminal-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-title {
+  color: #c0caf5;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.terminal-subtitle {
+  margin-top: 2px;
+  color: #787c99;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.terminal-content {
+  margin: 0;
+  padding: 22px;
+  
+  color: #c0caf5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+  font-size: 15px;
+  line-height: 1.55;
+  font-variant-ligatures: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  tab-size: 2;
+}
+
+.terminal-content code {
+  font: inherit;
+}
+
+.terminal-watermark {
+  margin-top: 12px;
+  color: #787c99;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace;
+  font-size: 12px;
+  line-height: 1;
+  text-align: right;
+  opacity: 0.78;
+}
+</style>
+</head>
+<body>
+<main id="terminal-shot" class="terminal-shot">
+  <section class="terminal-window">
+    <div class="terminal-titlebar">
+  <div class="traffic-lights" aria-hidden="true">
+    <span class="traffic-light red"></span>
+    <span class="traffic-light yellow"></span>
+    <span class="traffic-light green"></span>
+  </div>
+  <div class="terminal-heading">
+    <div class="terminal-title">terminal-shot</div>
+    
+  </div>
+</div>
+    <pre class="terminal-content"><code><span style="color:#7dcfff">terminal-shot</span> v0.1.0<br/><br/><span style="color:#414868">$ pnpm test --color=always</span><br/><br/><span style="color:#9ece6a"> PASS </span> src/render/renderHtml.test.ts<br/><span style="color:#9ece6a"> PASS </span> src/commands/file.test.ts<br/><span style="color:#9ece6a"> PASS </span> src/themes.test.ts<br/><br/><b>Test Suites:</b> <span style="color:#9ece6a">3 passed</span>, 3 total<br/><b>Tests:</b>       <span style="color:#9ece6a">18 passed</span>, 18 total<br/><b>Time:</b>        1.42s<br/></code></pre>
+  </section>
+  
+</main>
+</body>
+</html>
