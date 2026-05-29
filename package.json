@@ -4,7 +4,7 @@
   "description": "Turn terminal output into beautiful shareable images for READMEs, docs, Discord, and social posts.",
   "type": "module",
   "bin": {
-    "terminal-shot": "./dist/index.js"
+    "terminal-shot": "dist/index.js"
   },
   "files": [
     "dist",
@@ -31,6 +31,14 @@
   ],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david-x3d/terminal-shot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/david-x3d/terminal-shot/issues"
+  },
+  "homepage": "https://github.com/david-x3d/terminal-shot#readme",
   "engines": {
     "node": ">=18"
   },

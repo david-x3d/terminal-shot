@@ -1,111 +1,94 @@
-# terminal-shot
+# terminal-shot 📸
 
-Turn terminal output into beautiful shareable images for READMEs, docs, Discord, and social posts.
+> Beautiful terminal screenshots from text, commands, and ANSI output.
 
-[![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![npm](https://img.shields.io/npm/v/terminal-shot?color=cb3837)](https://www.npmjs.com/package/terminal-shot)
+[![GitHub](https://img.shields.io/badge/GitHub-david--x3d%2Fterminal--shot-181717?logo=github)](https://github.com/david-x3d/terminal-shot)
+![Node](https://img.shields.io/badge/node-%3E%3D18-339933)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-`terminal-shot` is a local-first developer CLI that renders ANSI text, command output, or files into polished PNG, SVG, or HTML snapshots. It does not record your screen, capture your desktop, or upload anything.
+`terminal-shot` turns terminal output into polished PNG, SVG, or HTML images for READMEs, docs, Discord, changelogs, and social posts. It is local-first: no uploads, no telemetry, no desktop screen capture.
 
 ![terminal-shot demo](./examples/demo.png)
 
-## Install
+## ✨ Features
 
-Clone the repo and install it globally with npm:
+- Render pasted text, piped ANSI output, files, commands, or a built-in demo.
+- Export `png`, `svg`, or `html`.
+- Preserve ANSI colors and terminal formatting.
+- Built-in themes: `dark`, `catppuccin`, `tokyo-night`, `dracula`, `nord`, `github-dark`, `github-light`, `glass`, `mono`, and `matrix`.
+- Window chrome, title, subtitle, prompt, watermark, sizing, padding, radius, transparency, and typography controls.
+- Interactive wizard when you run `terminal-shot` with no arguments.
+- Works locally and in CI/headless environments.
+
+## 📦 Installation
 
 ```bash
-git clone https://github.com/david-x3d/terminal-shot.git
-cd terminal-shot
-npm install -g .
+npm install -g terminal-shot
 ```
 
-That installs dependencies, builds the project, and links `terminal-shot` onto your PATH. After it finishes you can run `terminal-shot` from anywhere.
-
-PNG export uses Playwright's headless Chromium. The first time you render a PNG, install the browser:
+PNG export uses Playwright Chromium. Install the browser once:
 
 ```bash
 npx playwright install chromium
 ```
 
-## Quick start
+## 🚀 Quick Start
 
-Run with no arguments to launch the interactive wizard:
+Run the guided wizard:
 
 ```bash
 terminal-shot
 ```
 
-The wizard walks you through:
-
-1. What to capture — a shell command, a text file, pasted text, or the built-in demo.
-2. Theme.
-3. Window title (optional).
-4. Output file.
-
-That's the whole flow. No flags to remember.
-
-## Pipe support
-
-Anything piped into `terminal-shot` is rendered directly. ANSI colors are preserved.
-
-```bash
-ls --color=always | terminal-shot -o ls.png
-fastfetch | terminal-shot -o fastfetch.png
-git status | terminal-shot --theme dracula -o status.png
-npm test --color=always | terminal-shot --title "npm test" -o tests.png
-```
-
-If you don't pass `-o`, the output goes to `terminal-shot.png` in the current directory.
-
-## Other ways to use it
-
-Render a built-in demo:
+Render the built-in demo:
 
 ```bash
 terminal-shot demo -o demo.png
 ```
 
-Run a command and render its output:
+Pipe command output:
 
 ```bash
-terminal-shot run "git status --short" -o status.png
+npm test --color=always | terminal-shot --title "npm test" -o tests.png
+git status --short | terminal-shot --theme dracula -o status.png
+fastfetch | terminal-shot --theme glass -o system.png
 ```
 
-Render a text file:
+Render a command directly:
 
 ```bash
-terminal-shot file output.txt -o output.png
+terminal-shot run "git log --oneline -5" --title "Recent commits" -o commits.png
 ```
 
-Export SVG or HTML instead of PNG:
+Render a file:
 
 ```bash
-terminal-shot demo --format svg -o demo.svg
-terminal-shot file output.txt --format html -o output.html
+terminal-shot file output.txt --format svg -o output.svg
 ```
 
-## Themes
+## 🎨 Themes
 
-List them:
+List available themes:
 
 ```bash
 terminal-shot themes
 ```
 
-Built-ins: `dark`, `catppuccin`, `tokyo-night`, `dracula`, `nord`, `github-dark`, `github-light`, `glass`, `mono`, `matrix`.
-
-Pick one:
+Use a theme:
 
 ```bash
-terminal-shot demo --theme glass -o glass.png
+terminal-shot demo --theme tokyo-night -o tokyo-night.png
+terminal-shot demo --theme github-light --format svg -o github-light.svg
 ```
 
-## Common options
+## 🛠 Options
 
 ```bash
 terminal-shot demo \
   --theme tokyo-night \
   --title "npm test" \
-  --subtitle "~/repo/terminal-shot" \
+  --subtitle "~/repo" \
   --width 900 \
   --padding 32 \
   --radius 18 \
@@ -132,7 +115,7 @@ terminal-shot demo \
 | `--config <file>` | Custom config path |
 | `--json` | Print render metadata as JSON |
 
-## Config
+## ⚙️ Config
 
 Create a config file:
 
@@ -140,7 +123,7 @@ Create a config file:
 terminal-shot init
 ```
 
-`terminal-shot.config.json`:
+Example `terminal-shot.config.json`:
 
 ```json
 {
@@ -154,41 +137,22 @@ terminal-shot init
 }
 ```
 
-Then use a custom path with `--config`:
+Use a custom path:
 
 ```bash
 terminal-shot demo --config ./shot.config.json -o demo.png
 ```
 
-## Privacy
+## 🔐 Privacy
 
-`terminal-shot` is local-only by design:
+- No telemetry.
+- No cloud rendering.
+- No uploads.
+- No desktop screen recording.
+- Command mode runs locally through your system shell.
+- PNG output uses a local headless Chromium instance.
 
-- no telemetry
-- no cloud rendering
-- no uploads
-- no screen capture
-- no desktop environment required
-
-Text is rendered into HTML locally; a headless browser is only used when PNG output is requested.
-
-## Why not a screenshot tool?
-
-Screen capture is great when you need the real screen. `terminal-shot` is for clean, reproducible terminal artwork:
-
-- output is generated from text, not pixels from your desktop
-- ANSI colors are preserved
-- renders work in CI and headless environments
-- results are consistent across machines
-- commands and docs can generate their own images
-
-## Limitations
-
-- PNG export requires Playwright's Chromium browser.
-- Command mode uses your system shell. Treat it like running the command directly.
-- Interactive full-screen terminal programs are not the target. Pipe their output first.
-
-## Development
+## 🧪 Development
 
 ```bash
 git clone https://github.com/david-x3d/terminal-shot.git
@@ -199,7 +163,7 @@ npx playwright install chromium
 node dist/index.js demo -o examples/demo.png
 ```
 
-Smoke tests:
+Smoke checks:
 
 ```bash
 printf '\033[32mPASS\033[0m hello\n' | node dist/index.js --format html -o examples/stdin.html
@@ -207,6 +171,6 @@ node dist/index.js file examples/demo.txt --format svg -o examples/demo.svg
 node dist/index.js demo -o examples/demo.png
 ```
 
-## License
+## 📄 License
 
 MIT
